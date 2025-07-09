@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 Câu Hỏi Trắc Nghiệm - CF Nâng Cao & Deep Learning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        header {
+            text-align: center;
+            border-bottom: 2px solid #d9534f;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+        }
+        header h1 {
+            color: #d9534f;
+            margin: 0;
+        }
+        header p {
+            margin: 5px 0 0;
+            font-style: italic;
+            color: #555;
+        }
+        .question-block {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-left: 5px solid #d9534f;
+            border-radius: 5px;
+            background-color: #fdfdfd;
+        }
+        .question-text {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .options {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .options li {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .explanation {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e9f7ef;
+            border: 1px solid #a3d9b8;
+            border-radius: 5px;
+        }
+        .explanation b {
+            color: #1d7b46;
+        }
+        .correct-answer {
+            background-color: #dff0d8;
+            border-left: 3px solid #3c763d;
+        }
+        .fill-in-answer {
+            font-weight: bold;
+            color: #3c763d;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>100 Câu Hỏi Trắc Nghiệm - CF Nâng Cao & Deep Learning</h1>
+            <p>Dựa trên nội dung slide "Hệ gợi ý (IT4613)" - Viện CNTT&TT - ĐHBK Hà Nội</p>
+        </header>
+
+        <!-- CATEGORY: CF with Basic ML -->
+
+        <div class="question-block">
+            <p class="question-text">Câu 1: Theo slide 8, khi áp dụng các phương pháp học máy cơ bản cho CF, mỗi người dùng (user) được biểu diễn như thế nào?</p>
+            <ul class="options">
+                <li>A. Một giá trị vô hướng.</li>
+                <li class="correct-answer">B. Một vector mà mỗi chiều là các item.</li>
+                <li>C. Một cây quyết định.</li>
+                <li>D. Một chuỗi văn bản mô tả sở thích.</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 8 nêu rõ: "Biểu diễn user là các vector mà mỗi chiều là các items". Mỗi user sẽ là một hàng trong ma trận dữ liệu.</p>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <p class="question-text">Câu 2: Điểm khác biệt chính khi áp dụng các mô hình phân loại (như Naïve Bayes, Decision Tree) vào bài toán CF so với bài toán phân loại truyền thống là gì?</p>
+            <ul class="options">
+                <li>A. Dữ liệu trong CF luôn là dạng liên tục.</li>
+                <li>B. CF không cần dữ liệu huấn luyện.</li>
+                <li class="correct-answer">C. Bất kỳ thuộc tính (item) nào cũng có thể đóng vai trò là thuộc tính nhãn (label).</li>
+                <li>D. CF chỉ sử dụng Mạng nơ-ron.</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 9 và 13 đều nhấn mạnh sự khác biệt này: "Khác biệt với Naïve Bayes/decision tree truyền thống: Bất kỳ feature nào cũng có thể là label". Trong phân loại truyền thống, chỉ có một cột nhãn cố định.</p>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <p class="question-text">Câu 3 (Điền đáp án): Nếu có N items trong hệ thống, cần phải xây dựng bao nhiêu bộ phân loại (ví dụ: cây quyết định) để có thể dự đoán rating cho bất kỳ item nào?</p>
+            <div class="explanation">
+                <p><b>✅ Đáp án:</b> <span class="fill-in-answer">N</span></p>
+                <p><b>💡 Giải thích:</b> Slide 8 và 13 nêu rõ: "Số lượng bộ phân loại bằng số lượng items" và "Phải xây dựng số lượng cây quyết định bằng số lượng items". Mỗi item cần một mô hình riêng để dự đoán rating cho nó.</p>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <p class="question-text">Câu 4: Trong CF dựa trên Naïve Bayes, `P(ruj = vs)` (xác suất rating của user u cho item j bằng giá trị vs) được xem là gì?</p>
+            <ul class="options">
+                <li>A. Xác suất hậu nghiệm (Posterior)</li>
+                <li class="correct-answer">B. Xác suất tiên nghiệm (Prior)</li>
+                <li>C. Xác suất likelihood</li>
+                <li>D. Bằng chứng (Evidence)</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 11 định nghĩa `P(ruj = vs)` là "xác suất tiên nghiệm". Đây là xác suất một rating bất kỳ cho item j có giá trị `vs` trước khi quan sát các rating khác của user u.</p>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <p class="question-text">Câu 5: Giả thiết "độc lập có điều kiện" trong CF dựa trên Naïve Bayes (slide 11) phát biểu rằng điều gì là đúng?</p>
+            <ul class="options">
+                <li>A. Các rating của một user là độc lập với nhau.</li>
+                <li class="correct-answer">B. Cho trước rating của item `j` mà ta muốn dự đoán, các rating của các item khác trong `I_u` là độc lập với nhau.</li>
+                <li>C. Tất cả các user là độc lập với nhau.</li>
+                <li>D. Tất cả các item là độc lập với nhau.</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 11 trình bày công thức của giả thiết này: `P(Observed ratings in Iu | ruj = vs) = Π P(ruk | ruj = vs)`. Điều này có nghĩa là, khi đã biết `ruj = vs`, xác suất của các rating `ruk` khác không còn phụ thuộc lẫn nhau.</p>
+            </div>
+        </div>
+
+        <!-- CATEGORY: DEEP LEARNING FOR CF -->
+
+        <div class="question-block">
+            <p class="question-text">Câu 6: Theo slide 14, các phương pháp Lọc cộng tác nâng cao sử dụng Deep Learning được xây dựng dựa trên kỹ thuật nền tảng nào?</p>
+            <ul class="options">
+                <li>A. Lọc cộng tác dựa trên láng giềng</li>
+                <li class="correct-answer">B. Phân tích ma trận (Matrix Factorization)</li>
+                <li>C. Cây quyết định</li>
+                <li>D. Máy vector hỗ trợ (SVM)</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 14 giới thiệu các phương pháp deep learning "trong phân tích ma trận (matrix factorization)", cho thấy MF là ý tưởng nền tảng được mở rộng và cải tiến.</p>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <p class="question-text">Câu 7: Mô hình General Matrix Factorization (GMF) sử dụng phép toán nào để kết hợp vector ẩn của user và item?</p>
+            <ul class="options">
+                <li>A. Tích vô hướng (Dot product)</li>
+                <li>B. Ghép nối (Concatenation)</li>
+                <li class="correct-answer">C. Tích theo từng phần tử (Element-wise Product)</li>
+                <li>D. Phép cộng vector</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Sơ đồ và công thức trên slide 21 cho thấy GMF sử dụng "Element-wise Product" (kí hiệu ⊙) để tạo ra vector tương tác từ vector user `pu` và vector item `qi`.</p>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <p class="question-text">Câu 8: Theo slide 22, nếu hàm `a_out` là hàm đồng nhất và các trọng số `h` đều bằng 1 trong mô hình GMF, nó sẽ tương đương với mô hình nào?</p>
+            <ul class="options">
+                <li class="correct-answer">A. Matrix Factorization (MF) truyền thống.</li>
+                <li>B. Multi-layer Perceptron (MLP).</li>
+                <li>C. Item-based CF.</li>
+                <li>D. Naïve Bayes.</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 22 giải thích: "a_out là hàm đồng nhất, các trọng số trong h đều bằng 1 => MF". Khi đó, `y_ui` sẽ là tổng của các phần tử trong vector `pu ⊙ qi`, tương đương với tích vô hướng `pu . qi` của MF truyền thống.</p>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <p class="question-text">Câu 9: Mô hình Multi-layer Perceptron (MLP) cho CF (slide 23) sử dụng phép toán nào để kết hợp vector ẩn của user và item trước khi đưa vào các tầng ẩn?</p>
+            <ul class="options">
+                <li>A. Tích vô hướng (Dot product)</li>
+                <li class="correct-answer">B. Ghép nối (Concatenation)</li>
+                <li>C. Tích theo từng phần tử (Element-wise Product)</li>
+                <li>D. Phép trừ vector</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Sơ đồ trên slide 23 cho thấy vector user và item được "Concatenation" (ghép nối) lại với nhau để tạo thành đầu vào cho MLP Layer 1. Công thức `z1 = [pu; qi]` cũng thể hiện điều này.</p>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <p class="question-text">Câu 10: Mô hình Neural Matrix Factorization (NeuMF) kết hợp những mô hình nào?</p>
+            <ul class="options">
+                <li>A. MF và Naïve Bayes</li>
+                <li class="correct-answer">B. GMF và MLP</li>
+                <li>C. User-based CF và Item-based CF</li>
+                <li>D. MLP và Cây quyết định</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 24 nêu rõ "Kết hợp 2 mô hình GMF, MLP". NeuMF tận dụng khả năng mô hình hóa tương tác tuyến tính của GMF và tương tác phi tuyến của MLP.</p>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <p class="question-text">Câu 11: Một đặc điểm kiến trúc quan trọng của NeuMF là gì?</p>
+            <ul class="options">
+                <li>A. Chỉ sử dụng một tầng ẩn.</li>
+                <li>B. Chỉ áp dụng cho dữ liệu explicit.</li>
+                <li class="correct-answer">C. Sử dụng các tầng embedding riêng biệt cho nhánh GMF và nhánh MLP.</li>
+                <li>D. Sử dụng chung một tầng embedding cho cả hai nhánh.</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 24 và 25 đều nhấn mạnh: "Sử dụng tầng embedding riêng cho mỗi mô hình". Sơ đồ cũng cho thấy có "GMF User vector", "MLP User vector", "GMF Item vector", "MLP Item vector" riêng biệt, cho phép mỗi mô hình học các biểu diễn ẩn phù hợp nhất với nó.</p>
+            </div>
+        </div>
+        
+        <div class="question-block">
+            <p class="question-text">Câu 12: Mô hình Deep Matrix Factorization (DMF) trên slide 26 khác với NeuMF ở điểm cơ bản nào?</p>
+            <ul class="options">
+                <li>A. DMF không sử dụng mạng nơ-ron.</li>
+                <li>B. DMF chỉ dùng cho dữ liệu explicit.</li>
+                <li class="correct-answer">C. DMF sử dụng toàn bộ vector tương tác của user/item làm đầu vào và có hai tháp MLP riêng biệt, trong khi NeuMF dùng ID one-hot và kết hợp GMF-MLP.</li>
+                <li>D. DMF không học được biểu diễn ẩn.</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Sơ đồ trên slide 26 cho thấy đầu vào của DMF là các cột/hàng từ "Interaction Matrix" (toàn bộ vector tương tác). Sau đó, nó sử dụng hai mạng MLP song song (một cho user, một cho item) để học biểu diễn ẩn. Cuối cùng, nó đo độ tương đồng (relevance) bằng cosine similarity. Kiến trúc này hoàn toàn khác với NeuMF.</p>
+            </div>
+        </div>
+        
+        <!-- CATEGORY: IMPLICIT & EXPLICIT DATA -->
+
+        <div class="question-block">
+            <p class="question-text">Câu 13 (Chọn nhiều đáp án): Theo slide 27, đặc điểm của dữ liệu explicit feedback là gì?</p>
+            <ul class="options">
+                <li class="correct-answer">A. Dữ liệu quý giá, thể hiện sở thích của user.</li>
+                <li>B. Dữ liệu nhiều, dễ thu thập.</li>
+                <li class="correct-answer">C. Thưa, ít, khó thu thập.</li>
+                <li class="correct-answer">D. Khó khăn khi học các mô hình.</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 27 liệt kê tất cả các đặc điểm này cho "Dữ liệu explicit feedback".</p>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <p class="question-text">Câu 14 (Chọn nhiều đáp án): Theo slide 27, đặc điểm của dữ liệu implicit feedback là gì?</p>
+            <ul class="options">
+                <li>A. Luôn phản ánh chính xác sở thích của người dùng.</li>
+                <li class="correct-answer">B. Dữ liệu nhiều, dễ thu thập.</li>
+                <li class="correct-answer">C. Phản ánh tiềm ẩn mức độ ưa thích của người dùng.</li>
+                <li class="correct-answer">D. Có thể có nhiễu.</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 27 liệt kê các đặc điểm này cho "Dữ liệu implicit feedback". "Có nhiễu" vì một cú click có thể là do nhầm lẫn, không nhất thiết là thích.</p>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <p class="question-text">Câu 15: Mô hình Weighted Matrix Factorization (WMF) được thiết kế chủ yếu để xử lý loại dữ liệu nào?</p>
+            <ul class="options">
+                <li>A. Dữ liệu explicit</li>
+                <li class="correct-answer">B. Dữ liệu implicit</li>
+                <li>C. Dữ liệu văn bản</li>
+                <li>D. Dữ liệu hình ảnh</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 28-29 giới thiệu WMF trong bối cảnh xử lý "Dữ liệu tiềm ẩn" (implicit), như số lần xem video, lịch sử mua sắm.</p>
+            </div>
+        </div>
+        
+        <div class="question-block">
+            <p class="question-text">Câu 16: Trong WMF (slide 29), `c_ui = 1 + α * r_ui` đóng vai trò là gì?</p>
+            <ul class="options">
+                <li>A. Giá trị rating dự đoán.</li>
+                <li>B. Tham số hiệu chỉnh (regularization).</li>
+                <li class="correct-answer">C. Trọng số thể hiện độ tin cậy (confidence) của tương tác.</li>
+                <li>D. Tốc độ học (learning rate).</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 29 nêu rõ `c_ui` là "trọng số thể hiện độ tin cậy". Ý tưởng là một tương tác lặp lại nhiều lần (`r_ui` lớn) thì đáng tin cậy hơn là một tương tác chỉ xảy ra một lần.</p>
+            </div>
+        </div>
+        
+        <div class="question-block">
+            <p class="question-text">Câu 17: Mục tiêu chính của Bayesian Personalized Ranking (BPR) là gì?</p>
+            <ul class="options">
+                <li>A. Dự đoán chính xác giá trị rating.</li>
+                <li class="correct-answer">B. Đưa ra một danh sách có xếp hạng (ranking) tối ưu cho mỗi người dùng.</li>
+                <li>C. Phân cụm người dùng.</li>
+                <li>D. Tìm các thuộc tính ẩn của sản phẩm.</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 30 giới thiệu BPR với mục tiêu: "Đưa ra một danh sách có xếp hạng các sản phẩm cho mỗi người dùng". BPR tối ưu hóa trực tiếp cho bài toán xếp hạng.</p>
+            </div>
+        </div>
+        
+        <div class="question-block">
+            <p class="question-text">Câu 18: BPR tiếp cận bài toán gợi ý bằng cách nào?</p>
+            <ul class="options">
+                <li>A. Theo từng điểm (pointwise), dự đoán rating cho từng cặp (user, item).</li>
+                <li class="correct-answer">B. Theo cặp (pairwise), học mối quan hệ thứ tự giữa các item cho một user.</li>
+                <li>C. Theo danh sách (listwise), tối ưu hóa toàn bộ danh sách gợi ý cùng lúc.</li>
+                <li>D. Bằng cách xây dựng cây quyết định.</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 30 và 32 chỉ ra rằng BPR "Tiếp cận theo cặp item", học mối quan hệ "i >u j" (user u thích item i hơn item j). Đây là cách tiếp cận pairwise.</p>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <p class="question-text">Câu 19: Trong BPR, một cặp (user-item) không được quan sát có thể mang ý nghĩa gì?</p>
+            <ul class="options">
+                <li>A. Chỉ có nghĩa là người dùng không thích sản phẩm đó.</li>
+                <li>B. Chỉ có nghĩa là người dùng chưa biết đến sản phẩm đó.</li>
+                <li class="correct-answer">C. Có thể là người dùng thực sự không thích (negative) hoặc chỉ là chưa biết (missing value).</li>
+                <li>D. Luôn được coi là một tương tác tích cực (positive).</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 30 giải thích về dữ liệu tiềm ẩn trong BPR: "Các cặp user-item không quan sát được: có thể thực sự không thích (negative), chưa biết (missing value)". Đây là sự mơ hồ mà BPR cố gắng giải quyết.</p>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <p class="question-text">Câu 20: BPR sử dụng hàm sigmoid để mô hình hóa xác suất `p(i >u j)`. Đầu vào của hàm sigmoid này là gì?</p>
+            <ul class="options">
+                <li>A. Điểm dự đoán `r_ui`.</li>
+                <li>B. Điểm dự đoán `r_uj`.</li>
+                <li>C. Tổng của các điểm dự đoán `r_ui + r_uj`.</li>
+                <li class="correct-answer">D. Hiệu của các điểm dự đoán `r_ui - r_uj`.</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 33 trình bày công thức `p(i >u j|Θ) = σ(r_uij(Θ))` và `r_uij = r_ui - r_uj`. Điều này có nghĩa là BPR mô hình hóa xác suất user u thích i hơn j dựa trên sự chênh lệch điểm số dự đoán giữa i và j.</p>
+            </div>
+        </div>
+        
+        <!-- CATEGORY: ADVANCED & HYBRID MODELS -->
+
+        <div class="question-block">
+            <p class="question-text">Câu 21: Mô hình Co-rating (slide 36) được thiết kế để giải quyết bài toán nào?</p>
+            <ul class="options">
+                <li>A. Chỉ sử dụng dữ liệu implicit.</li>
+                <li>B. Chỉ sử dụng dữ liệu explicit.</li>
+                <li class="correct-answer">C. Sử dụng đồng thời cả dữ liệu implicit và explicit.</li>
+                <li>D. Xếp hạng các sản phẩm.</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Tiêu đề slide 36 là "Lọc cộng tác sử dụng đồng thời Implicit và explicit feedback", và mô hình được giới thiệu là "Co-rating: Sử dụng cả dữ liệu implicit X và explicit Y".</p>
+            </div>
+        </div>
+        
+        <div class="question-block">
+            <p class="question-text">Câu 22: Mô hình Neural Multi-Task Recommendation (slide 37-38) phù hợp nhất với loại kịch bản nào?</p>
+            <ul class="options">
+                <li>A. Người dùng chỉ có một loại hành vi duy nhất (ví dụ: chỉ mua hàng).</li>
+                <li class="correct-answer">B. Người dùng có nhiều loại hành vi có tính thứ tự (ví dụ: xem -> thêm vào giỏ hàng -> mua).</li>
+                <li>C. Hệ thống không có dữ liệu hành vi.</li>
+                <li>D. Hệ thống chỉ có dữ liệu rating 5 sao.</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 37-38 mô tả một mô hình cho "R loại hành vi khác nhau" và "có tính thứ tự từ thấp đến cao", trong đó "hành vi loại sau phụ thuộc vào hành vi loại trước". Đây chính là kịch bản đa hành vi có trật tự.</p>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <p class="question-text">Câu 23: Trong mô hình Implicit to Explicit (slide 40), thông tin nào được sử dụng làm đầu vào để dự đoán hành vi rõ ràng (explicit)?</p>
+            <ul class="options">
+                <li class="correct-answer">A. Đầu ra của mô hình con dự đoán tương tác tiềm ẩn (implicit).</li>
+                <li>B. Dữ liệu nhân khẩu học của người dùng.</li>
+                <li>C. Độ phổ biến của sản phẩm.</li>
+                <li>D. Dữ liệu từ các người dùng khác.</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 40 mô tả kiến trúc này: "Tầng cuối cùng trong mô hình tương tác tiềm ẩn làm đầu vào cho tầng khác với giá trị đầu ra dự đoán điểm cho tương tác hành vi rõ ràng." Sơ đồ cũng cho thấy đầu ra từ "Implicit Layer" được đưa vào "ITE Layer 1".</p>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <p class="question-text">Câu 24 (Điền đáp án): Trong hàm mục tiêu của mô hình Implicit to Explicit (slide 44), `L_I` và `L_E` là hàm lỗi cho hai loại hành vi nào?</p>
+            <div class="explanation">
+                <p><b>✅ Đáp án:</b> <span class="fill-in-answer">Tường ẩn (implicit) và rõ ràng (explicit)</span></p>
+                <p><b>💡 Giải thích:</b> Slide 44 ghi rõ: "`L_I`, `L_E` hàm lỗi của hành vi tường ẩn và rõ ràng." `L_I` tính lỗi cho dự đoán implicit (`x_hat`) và `L_E` tính lỗi cho dự đoán explicit (`y_hat`).</p>
+            </div>
+        </div>
+        
+        <div class="question-block">
+            <p class="question-text">Câu 25: Trong kiến trúc NeuMF (slide 24), tại sao GMF được coi là mô hình tuyến tính?</p>
+            <ul class="options">
+                <li class="correct-answer">B. Vì nếu không có các hàm kích hoạt phi tuyến ở tầng cuối, phép nhân element-wise và sau đó là tích vô hướng với vector trọng số `h` có thể được xem như một dạng tổng quát của tích vô hướng, một phép toán tuyến tính.</li>
+                <li>A. Vì nó chỉ có một tầng.</li>
+                <li>C. Vì nó sử dụng hàm kích hoạt ReLU.</li>
+                <li>D. Vì nó không có tầng embedding.</li>
+            </ul>
+            <div class="explanation">
+                <p><b>💡 Giải thích:</b> Slide 24 ghi "GMF: mô hình tuyến tính". Mặc dù có tầng embedding, bản chất của tương tác trong GMF (element-wise product) được thiết kế để nắm bắt các tương tác tuyến tính, tương tự như tích vô hướng trong MF truyền thống. Ngược lại, MLP với các hàm kích hoạt phi tuyến rõ ràng được thiết kế để nắm bắt các tương tác phức tạp, phi tuyến.</p>
+            </div>
+        </div>
+        
+        <div class="question-block"><p class="question-text">Câu 26: Hàm kích hoạt nào được sử dụng trong các tầng ẩn của mô hình MLP cho CF (slide 23)?</p><ul class="options"><li>A. Sigmoid</li><li>B. Tanh</li><li class="correct-answer">C. ReLU</li><li>D. Softmax</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 23 ghi rõ: "Sử dụng ReLU làm hàm kích hoạt." Sơ đồ cũng có các nhãn "ReLU" giữa các tầng MLP.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 27: (Điền đáp án) Trong WMF, nếu `α = 40` và `r_ui = 2` (user u xem item i 2 lần), thì độ tin cậy `c_ui` là bao nhiêu?</p><div class="explanation"><p><b>✅ Đáp án:</b> <span class="fill-in-answer">81</span></p><p><b>💡 Giải thích:</b> Theo công thức `c_ui = 1 + α * r_ui` (slide 29), ta có `c_ui = 1 + 40 * 2 = 1 + 80 = 81`.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 28: Trong hàm mục tiêu của Co-rating (slide 36), tham số `η` (eta) dùng để làm gì?</p><ul class="options"><li>A. Tốc độ học.</li><li class="correct-answer">B. Thể hiện mức độ quan trọng giữa tương tác ẩn và tường minh.</li><li>C. Tham số hiệu chỉnh.</li><li>D. Số chiều của vector ẩn.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 36 ghi "Sử dụng trọng số eta để thể hiện mức độ quan trọng giữa các tương tác ẩn và tường minh." Nó cân bằng giữa hai hàm lỗi `L_E` (explicit) và `L_I` (implicit).</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 29: Trong mô hình CF dựa trên Naïve Bayes, để dự đoán rating cho item `j` của user `u`, ta cần các thống kê trên toàn bộ dữ liệu training liên quan đến item nào?</p><ul class="options"><li>A. Liên quan đến tất cả các item.</li><li>B. Liên quan đến các item mà user `u` đã rate.</li><li class="correct-answer">C. Liên quan đến chính item `j`.</li><li>D. Không cần thống kê nào.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 12 ghi chú: "Chú ý thống kê P(vs) và P(vk|ruj = vs) theo thuộc tính j trên toàn bộ dữ liệu training". Điều này có nghĩa là các xác suất cần thiết được tính toán dựa trên lịch sử của chính item `j` đó.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 30: Tại sao việc học biểu diễn ẩn (learning latent representations) lại quan trọng trong các mô hình CF hiện đại?</p><ul class="options"><li>A. Vì nó làm cho mô hình dễ giải thích hơn.</li><li class="correct-answer">B. Vì nó giúp khắc phục vấn đề dữ liệu thưa và nắm bắt các đặc trưng phức tạp, không tường minh của user và item.</li><li>C. Vì nó là yêu cầu bắt buộc của tất cả các thuật toán học máy.</li><li>D. Vì nó giảm số lượng người dùng cần thiết.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Các slide từ 14 đến 26 đều tập trung vào việc "học biểu diễn ẩn". Ý tưởng là thay vì làm việc với ma trận thưa thớt, ta nén thông tin vào các vector đặc trưng ẩn (latent vectors) dày đặc, giúp mô hình có khả năng tổng quát hóa và khám phá các mối quan hệ sâu sắc hơn.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 31: Đầu vào của mô hình GMF và MLP trong kiến trúc NeuMF là gì?</p><ul class="options"><li>A. Toàn bộ ma trận rating.</li><li class="correct-answer">B. Vector one-hot mã hóa định danh cho user và item.</li><li>C. Dữ liệu nhân khẩu học.</li><li>D. Văn bản mô tả sản phẩm.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 21 và 23 đều nói rằng "Đầu vào là vector one-hot". Vector này sau đó được đưa qua tầng embedding để lấy ra vector đặc trưng ẩn tương ứng.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 32: Trong WMF, dữ liệu tương tác tiềm ẩn `r_ui` được chuyển về dạng nhị phân `p_ui`. `p_ui = 1` khi nào?</p><ul class="options"><li>A. Khi `r_ui = 1`</li><li>B. Khi `r_ui = 0`</li><li class="correct-answer">C. Khi `r_ui > 0`</li><li>D. Khi `r_ui < 0`</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 29 đưa ra công thức chuyển đổi: `p_ui = 1` nếu `r_ui > 0`, và `p_ui = 0` nếu `r_ui = 0`. Điều này có nghĩa là bất kỳ tương tác nào (dù là xem 1% hay 100% video) đều được coi là một tín hiệu tích cực.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 33: Mục tiêu của hàm tối ưu BPR (slide 34) là gì?</p><ul class="options"><li>A. Tối thiểu hóa sai số dự đoán rating.</li><li class="correct-answer">B. Tối đa hóa xác suất hậu nghiệm của các mối quan hệ thứ tự quan sát được.</li><li>C. Tối thiểu hóa số lượng láng giềng.</li><li>D. Tối đa hóa độ tương đồng cosine.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 32 giới thiệu xác suất hậu nghiệm `p(Θ|i >u j)`. Slide 34 trình bày hàm mục tiêu BPR-Opt, bắt đầu bằng việc tối đa hóa `Π p(i >u j|Θ)p(Θ)`, chính là tối đa hóa xác suất hậu nghiệm (Maximum a posteriori - MAP).</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 34: (Điền đáp án) Trong mô hình Multi-layer Perceptron (slide 23), nếu vector ẩn của user `pu` có 16 chiều và vector ẩn của item `qi` có 16 chiều, thì vector đầu vào `z1` cho tầng MLP đầu tiên sẽ có bao nhiêu chiều?</p><div class="explanation"><p><b>✅ Đáp án:</b> <span class="fill-in-answer">32</span></p><p><b>💡 Giải thích:</b> `z1` được tạo ra bằng cách ghép nối (concatenate) `pu` và `qi`. Do đó, số chiều của `z1` sẽ là tổng số chiều của hai vector này: 16 + 16 = 32.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 35: Theo slide 25, hàm kích hoạt `a_out` được sử dụng ở tầng cuối của NeuMF là gì?</p><ul class="options"><li class="correct-answer">A. Sigmoid</li><li>B. ReLU</li><li>C. Tanh</li><li>D. Identity (Đồng nhất)</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 25 ghi rõ: "`a_out` : sử dụng hàm sigmoid". Hàm sigmoid đưa ra kết quả trong khoảng (0, 1), phù hợp để diễn giải như một xác suất tương tác.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 36: Khác biệt cơ bản giữa CF dựa trên Cây quyết định và Naïve Bayes là gì?</p><ul class="options"><li>A. Cây quyết định chỉ dùng cho dữ liệu liên tục.</li><li>B. Naïve Bayes luôn chính xác hơn.</li><li class="correct-answer">C. Cây quyết định có thể học các tương tác phức tạp hơn giữa các feature (item), trong khi Naïve Bayes giả định chúng độc lập có điều kiện.</li><li>D. Naïve Bayes cần nhiều bộ phân loại hơn.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Cây quyết định, bằng cách chia không gian dữ liệu, có thể mô hình hóa các mối quan hệ phi tuyến và tương tác giữa các thuộc tính. Ngược lại, giả định "naïve" (ngây thơ) của Naïve Bayes chính là sự độc lập có điều kiện, bỏ qua các tương tác này.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 37: Trong Neural Multi-Task Recommendation (slide 38), tại sao hành vi loại sau lại phụ thuộc vào hành vi loại trước?</p><ul class="options"><li>A. Để giảm số lượng tham số.</li><li class="correct-answer">B. Để mô hình hóa tính thứ tự và sự chuyển tiếp tự nhiên giữa các hành vi (ví dụ: phải xem rồi mới có thể mua).</li><li>C. Để tăng tốc độ huấn luyện.</li><li>D. Đây chỉ là một lựa chọn ngẫu nhiên.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 38 mô tả kiến trúc nơi đầu ra dự đoán của hành vi `r-1` (ví dụ: `y_hat_ui^(r-1)`) được đưa vào làm một phần đầu vào để tính toán cho hành vi `r`. Điều này trực tiếp mô hình hóa sự phụ thuộc và tính thứ tự.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 38: (Điền đáp án) Theo công thức cuối cùng ở slide 43, điểm số dự đoán cuối cùng `r_hat_ui` được tính như thế nào từ dự đoán hành vi tiềm ẩn `x_hat_ui` và hành vi rõ ràng `y_hat_ui`?</p><div class="explanation"><p><b>✅ Đáp án:</b> <span class="fill-in-answer">Tích của chúng (x_hat_ui * y_hat_ui)</span></p><p><b>💡 Giải thích:</b> Slide 43 trình bày công thức: `r_hat_ui = x_hat_ui * y_hat_ui`.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 39: Điều nào sau đây là một nhược điểm của việc áp dụng các mô hình học máy cơ bản (như Decision Tree) cho CF?</p><ul class="options"><li>A. Chúng không thể xử lý dữ liệu rời rạc.</li><li class="correct-answer">B. Cần phải xây dựng một số lượng lớn các mô hình (bằng số lượng item), rất tốn kém và khó bảo trì.</li><li>C. Chúng không thể học được từ dữ liệu.</li><li>D. Kết quả không thể giải thích được.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Như đã đề cập ở slide 8 và 13, việc phải xây dựng N mô hình riêng biệt cho N item là một rào cản lớn về mặt tính toán và quản lý, đặc biệt với các hệ thống có hàng triệu item.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 40: "Gaussian Naïve Bayes" được đề cập trong slide 9 để xử lý loại dữ liệu user-item feedback nào?</p><ul class="options"><li>A. Dữ liệu rời rạc</li><li class="correct-answer">B. Dữ liệu liên tục</li><li>C. Dữ liệu nhị phân</li><li>D. Dữ liệu thiếu</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 9 nói rằng Naïve Bayes có thể được "mở rộng với user-item feedback liên tục với Gaussian Naïve Bayes".</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 41: Trong GMF, trọng số `h` (slide 21-22) mô tả điều gì?</p><ul class="options"><li>A. Số chiều của không gian ẩn.</li><li class="correct-answer">B. Mức độ quan trọng khác nhau của các thuộc tính ẩn.</li><li>C. Vector ẩn của người dùng.</li><li>D. Hàm kích hoạt.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 22 giải thích: "Trọng số h: mô tả được mức độ quan trọng khác nhau của các thuộc tính ẩn". Vector này được nhân với kết quả của phép element-wise product trước khi đưa ra dự đoán cuối cùng.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 42: Tại sao MLP có thể học được các tương tác phi tuyến?</p><ul class="options"><li>A. Vì nó có nhiều tầng.</li><li class="correct-answer">B. Vì nó sử dụng các hàm kích hoạt phi tuyến (như ReLU) trong các tầng ẩn.</li><li>C. Vì nó sử dụng phép nối vector.</li><li>D. Vì nó có tầng embedding.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Khả năng học các hàm phức tạp, phi tuyến của mạng nơ-ron đa lớp đến từ việc kết hợp các phép biến đổi tuyến tính (nhân ma trận) với các hàm kích hoạt phi tuyến. Nếu không có các hàm kích hoạt này, toàn bộ mạng sẽ chỉ tương đương với một phép biến đổi tuyến tính duy nhất.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 43: Trong NeuMF, đầu ra của nhánh GMF và nhánh MLP được kết hợp như thế nào trước khi đưa ra dự đoán cuối cùng?</p><ul class="options"><li>A. Lấy trung bình.</li><li>B. Lấy tích.</li><li class="correct-answer">C. Ghép nối (Concatenation).</li><li>D. Lấy max.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Sơ đồ trên slide 24 cho thấy vector đầu ra từ "GMF Layer" và "MLP Layer X" được đưa vào "NeuMF Layer", và thao tác tại đây là "Concatenation".</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 44: Theo Yifan Hu et al. (2008), các tương tác ẩn như số lần xem, thời lượng xem được coi là loại phản hồi gì?</p><ul class="options"><li>A. Phản hồi tiêu cực.</li><li class="correct-answer">B. Phản hồi tích cực.</li><li>C. Phản hồi trung tính.</li><li>D. Phản hồi không có giá trị.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 28 giải thích: "Tương tác ẩn, dữ liệu tương tác tiềm ẩn thì đều là các phản hồi tích cực." Ý tưởng là người dùng sẽ không tương tác với những gì họ hoàn toàn không thích.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 45: Mục đích của việc đưa ra các cặp `(u, i, j)` trong BPR, với `i` là item đã quan sát và `j` là item không quan sát, là gì?</p><ul class="options"><li>A. Để tăng số lượng dữ liệu huấn luyện.</li><li class="correct-answer">B. Để tạo ra các cặp so sánh thứ tự, giả định rằng người dùng thích item họ đã tương tác hơn item họ chưa tương tác.</li><li>C. Để giải quyết vấn đề item cold-start.</li><li>D. Để giảm độ thưa của dữ liệu.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> BPR học từ các cặp so sánh. Bằng cách lấy một item `i` mà user `u` đã tương tác (positive) và một item `j` mà `u` chưa tương tác (assumed negative/missing), BPR tạo ra một điểm dữ liệu huấn luyện `i >u j` để tối ưu hóa mô hình.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 46: Trong hàm mục tiêu của Co-rating (slide 36), `R(P,Q)` là thành phần gì?</p><ul class="options"><li>A. Hàm lỗi.</li><li>B. Hàm kích hoạt.</li><li class="correct-answer">C. Thành phần hiệu chỉnh (Regularization).</li><li>D. Trọng số.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> `R(P,Q)` được định nghĩa là `||P||^2 + ||Q||^2`, tương tự như thành phần hiệu chỉnh trong MF truyền thống, dùng để tránh overfitting bằng cách phạt độ lớn của các vector ẩn.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 47: Trong Neural Multi-Task Recommendation (slide 39), tham số `λ_r` dùng để làm gì?</p><ul class="options"><li>A. Tốc độ học.</li><li class="correct-answer">B. Trọng số biểu diễn mức độ ảnh hưởng của từng loại hành vi.</li><li>C. Tham số hiệu chỉnh.</li><li>D. Số lượng nơ-ron trong tầng ẩn.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 39 giải thích: "`λ_r`, trọng số biểu diễn mức độ ảnh hưởng của từng loại hành vi." Nó cho phép điều chỉnh tầm quan trọng của việc dự đoán đúng mỗi loại hành vi trong hàm lỗi tổng thể.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 48: Mô hình Implicit to Explicit (I2E) được xây dựng dựa trên kiến trúc nền tảng nào?</p><ul class="options"><li>A. Chỉ GMF</li><li>B. Chỉ MLP</li><li class="correct-answer">C. Một kiến trúc tương tự NeuMF (kết hợp GMF và MLP) cho phần implicit.</li><li>D. BPR</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Sơ đồ trên slide 40 cho thấy phần dưới của mô hình (dự đoán tương tác implicit) có cấu trúc rất giống NeuMF, với các nhánh GMF và MLP được kết hợp. Đầu ra của phần này sau đó được đưa vào một mạng MLP khác (ITE) để dự đoán tương tác explicit.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 49: Hàm lỗi nào thường được sử dụng cho các bài toán phân loại nhị phân (dự đoán 0/1) trong các mô hình deep learning cho CF (ví dụ: NeuMF, I2E)?</p><ul class="options"><li>A. Mean Squared Error (MSE)</li><li class="correct-answer">B. Binary Cross-Entropy (Log Loss)</li><li>C. Mean Absolute Error (MAE)</li><li>D. Hinge Loss</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Các hàm lỗi trên slide 39 và 44 có dạng `Σ y*log(y_hat) + (1-y)*log(1-y_hat)`. Đây chính là công thức của Binary Cross-Entropy, là hàm lỗi tiêu chuẩn cho các bài toán phân loại nhị phân.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 50: (Điền đáp án) Trong BPR, nếu điểm dự đoán `r_ui = 2.5` và `r_uj = 1.0`, thì `r_uij` bằng bao nhiêu?</p><div class="explanation"><p><b>✅ Đáp án:</b> <span class="fill-in-answer">1.5</span></p><p><b>💡 Giải thích:</b> Theo công thức `r_uij = r_ui - r_uj` (slide 33), ta có `r_uij = 2.5 - 1.0 = 1.5`.</p></div></div>
+        
+        <!-- From 51 to 100 -->
+        <div class="question-block"><p class="question-text">Câu 51: Dữ liệu "like" một bài post trên mạng xã hội thuộc loại feedback nào?</p><ul class="options"><li class="correct-answer">A. Explicit feedback</li><li>B. Implicit feedback</li><li>C. Contextual feedback</li><li>D. Negative feedback</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 27 liệt kê "like" là một ví dụ của "Dữ liệu explicit feedback", vì nó thể hiện rõ ràng sự yêu thích của người dùng.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 52: Việc "xem" một sản phẩm trên trang thương mại điện tử thuộc loại feedback nào?</p><ul class="options"><li>A. Explicit feedback</li><li class="correct-answer">B. Implicit feedback</li><li>C. Positive feedback</li><li>D. Neutral feedback</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 27 liệt kê "view" là một ví dụ của "Dữ liệu implicit feedback", vì nó không trực tiếp khẳng định sự yêu thích nhưng là một tín hiệu tiềm ẩn.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 53: Theo slide 17, công thức dự đoán rating trong MF truyền thống `v_ui = w_u^T * h_i` là một phép toán gì?</p><ul class="options"><li>A. Tích ma trận</li><li class="correct-answer">B. Tích vô hướng (dot product)</li><li>C. Tích theo từng phần tử (element-wise product)</li><li>D. Phép nối (concatenation)</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> `w_u^T * h_i` là cách viết toán học của tích vô hướng giữa vector `w_u` và `h_i`.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 54: Thành phần hiệu chỉnh (regularization) trong hàm mục tiêu của MF (slide 19) sử dụng chuẩn (norm) nào của các vector ẩn?</p><ul class="options"><li>A. L0 norm</li><li>B. L1 norm (Lasso)</li><li class="correct-answer">C. L2 norm (Ridge/Frobenius norm)</li><li>D. Infinity norm</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Công thức `Σ||w_i||^2` là tổng bình phương của chuẩn L2 (Euclidean norm) của các vector. Đây là kỹ thuật hiệu chỉnh L2, còn được gọi là Ridge regression.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 55: (Điền đáp án) Trong kiến trúc Deep Matrix Factorization (slide 26), độ tương đồng (relevance) giữa biểu diễn ẩn của user và item được đo bằng gì?</p><div class="explanation"><p><b>✅ Đáp án:</b> <span class="fill-in-answer">Cosine similarity</span></p><p><b>💡 Giải thích:</b> Slide 26 có ghi chú "Relevance measured by cosine similarity" ở phía trên cùng của sơ đồ.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 56: Tại sao BPR được gọi là "Personalized Ranking"?</p><ul class="options"><li>A. Vì nó dự đoán rating cho mỗi người.</li><li class="correct-answer">B. Vì nó học một thứ tự xếp hạng riêng biệt cho mỗi người dùng (i >u j), thay vì một thứ tự chung cho tất cả.</li><li>C. Vì nó sử dụng thông tin cá nhân như tuổi, giới tính.</li><li>D. Vì nó cho phép người dùng tự xếp hạng sản phẩm.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Tên gọi này nhấn mạnh rằng mối quan hệ thứ tự `>` là phụ thuộc vào người dùng `u`. Cùng một cặp item (i, j), user A có thể thích i hơn j, nhưng user B lại có thể thích j hơn i. BPR mô hình hóa sự cá nhân hóa này.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 57: Trong các mô hình CF dựa trên Deep Learning như NeuMF, tầng embedding có vai trò gì?</p><ul class="options"><li>A. Giảm số lượng người dùng.</li><li class="correct-answer">B. Ánh xạ các ID định danh (thường là one-hot, thưa thớt) sang các vector đặc trưng ẩn (dày đặc, có số chiều thấp hơn).</li><li>C. Tính toán hàm lỗi.</li><li>D. Áp dụng hàm kích hoạt.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Tầng embedding là một kỹ thuật phổ biến trong DL để học các biểu diễn có ý nghĩa cho các thực thể rời rạc (như user ID, item ID). Nó là một dạng tra cứu (lookup) trong một ma trận trọng số, nơi mỗi hàng là một vector ẩn.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 58: Tại sao lại cần những mô hình phức tạp như Neural Multi-Task hoặc Implicit-to-Explicit?</p><ul class="options"><li>A. Để làm chậm quá trình huấn luyện.</li><li>B. Vì chúng đơn giản hơn MF.</li><li class="correct-answer">C. Vì các hành vi của người dùng trong thực tế rất đa dạng và có mối quan hệ phức tạp với nhau, các mô hình đơn giản không nắm bắt hết được.</li><li>D. Vì chúng không cần dữ liệu.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Các mô hình này được tạo ra để giải quyết các bài toán thực tế phức tạp hơn. Ví dụ, việc dự đoán "mua hàng" (explicit) sẽ chính xác hơn nếu ta cũng mô hình hóa các hành vi trước đó như "xem" và "thêm vào giỏ" (implicit), vì chúng cung cấp tín hiệu và ngữ cảnh quan trọng.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 59: Mô hình nào được giới thiệu bởi He et al. 2017?</p><ul class="options"><li>A. Deep Matrix Factorization</li><li class="correct-answer">B. Neural Matrix Factorization</li><li>C. Weighted Matrix Factorization</li><li>D. Bayesian Personalized Ranking</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 14 và 46 đều trích dẫn "[He et.al 2017]" cho "Neural matrix factorization".</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 60: Mô hình nào được giới thiệu bởi Rendle et al. 2009?</p><ul class="options"><li>A. Deep Matrix Factorization</li><li>B. Neural Matrix Factorization</li><li>C. Weighted Matrix Factorization</li><li class="correct-answer">D. Bayesian Personalized Ranking</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Tiêu đề các slide từ 30 đến 35 đều là "Bayesian Personalized Ranking (Rendle el at - 2009)".</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 61: Trong công thức dự đoán của Naïve Bayes (slide 12), mẫu số `Σ P(ruj = vs) * Π P(ruk|ruj = vs)` đóng vai trò gì?</p><ul class="options"><li>A. Xác suất tiên nghiệm</li><li>B. Xác suất likelihood</li><li class="correct-answer">C. Thành phần chuẩn hóa để đảm bảo tổng các xác suất `P(ruj = vs|...)` bằng 1.</li><li>D. Kỳ vọng của rating.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Trong định lý Bayes, mẫu số `P(Evidence)` đóng vai trò là hằng số chuẩn hóa. Ở đây, tổng theo tất cả các giá trị `vs` có thể có của tử số chính là bằng chứng (evidence) `P(Observed ratings in Iu)`, giúp chuyển đổi kết quả thành một phân phối xác suất hợp lệ.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 62: Một hạn chế của việc xem mỗi item là một "feature" trong các mô hình học máy cơ bản là gì?</p><ul class="options"><li class="correct-answer">A. Hiện tượng "lời nguyền số chiều" (curse of dimensionality) khi có hàng triệu item, khiến mô hình khó học.</li><li>B. Không thể xử lý item mới.</li><li>C. Không thể biểu diễn được user.</li><li>D. Mô hình sẽ quá đơn giản.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Khi số lượng item (tức là số chiều của vector user) quá lớn, không gian dữ liệu trở nên cực kỳ thưa thớt và rộng lớn, gây khó khăn cho hầu hết các thuật toán học máy trong việc tìm ra các mẫu có ý nghĩa. Đây là bản chất của "lời nguyền số chiều".</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 63: Trong mô hình GMF, nếu `a_out` là hàm sigmoid, mô hình MF thu được có tính chất gì?</p><ul class="options"><li>A. Tuyến tính</li><li class="correct-answer">B. Phi tuyến</li><li>C. Rời rạc</li><li>D. Liên tục</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 22 ghi: "`a_out` có thể là hàm phi tuyến (sigmoid,..) thu được mô hình MF phi tuyến." Việc thêm một hàm kích hoạt phi tuyến ở cuối sẽ làm cho mối quan hệ giữa đầu vào và đầu ra trở nên phi tuyến.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 64: Theo slide 5, nội dung nào KHÔNG được đề cập trong chương này?</p><ul class="options"><li>A. Lọc cộng tác dựa trên deep learning.</li><li>B. Dữ liệu implicit và explicit feedback.</li><li class="correct-answer">C. Lọc cộng tác dựa trên láng giềng gần (Neighborhood-based CF).</li><li>D. Lọc cộng tác dựa trên các mô hình học máy cơ bản.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 5 ("Nội dung") không liệt kê các phương pháp dựa trên láng giềng. Chương này tập trung hoàn toàn vào các phương pháp dựa trên mô hình, từ các mô hình học máy cơ bản đến deep learning.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 65: (Điền đáp án) Theo slide 37, nếu có R loại hành vi, mô hình Neural Multi-Task Recommendation sẽ biểu diễn chúng dưới dạng bao nhiêu ma trận nhị phân?</p><div class="explanation"><p><b>✅ Đáp án:</b> <span class="fill-in-answer">R</span></p><p><b>💡 Giải thích:</b> Slide 37 nêu: "Có R loại hành vi khác nhau biểu diễn cho R loại tương tác. Mỗi loại hành vi được biểu diễn dưới dạng ma trận cỡ MxN..."</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 66: Mô hình I2E (Implicit to Explicit) có thể được coi là một dạng học gì?</p><ul class="options"><li>A. Học không giám sát (Unsupervised Learning)</li><li>B. Học tăng cường (Reinforcement Learning)</li><li class="correct-answer">C. Học chuyển giao / Học đa nhiệm (Transfer Learning / Multi-task Learning)</li><li>D. Học bán giám sát (Semi-supervised Learning)</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Mô hình này học đồng thời hai nhiệm vụ (dự đoán implicit và explicit). Hơn nữa, kiến thức học được từ nhiệm vụ dự đoán implicit (biểu diễn `φ^I`) được "chuyển giao" để hỗ trợ cho nhiệm vụ dự đoán explicit. Đây là một ví dụ điển hình của học chuyển giao và đa nhiệm.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 67: Tại sao trong BPR, người ta thường lấy mẫu các cặp item (i, j) với i là item dương (positive) và j là item âm (chưa quan sát)?</p><ul class="options"><li>A. Vì số lượng item dương và âm luôn bằng nhau.</li><li class="correct-answer">B. Vì số lượng các cặp (âm, âm) hoặc (dương, dương) quá lớn và ít mang thông tin về thứ tự ưu tiên.</li><li>C. Vì mô hình không thể xử lý các cặp (dương, dương).</li><li>D. Để giảm độ phức tạp của thuật toán.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> BPR học từ sự khác biệt về sở thích. So sánh một item người dùng thích với một item họ (có thể) không thích sẽ cung cấp tín hiệu mạnh nhất cho việc học thứ tự. Số lượng tất cả các cặp có thể có là rất lớn, nên việc lấy mẫu một cách thông minh là cần thiết.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 68: Giả sử trong một hệ thống CF dựa trên Cây quyết định, để dự đoán rating cho phim "Titanic", các thuộc tính đầu vào (features) của mô hình sẽ là gì?</p><ul class="options"><li>A. Thể loại, đạo diễn của "Titanic".</li><li class="correct-answer">B. Rating của người dùng cho các phim khác như "Avatar", "Inception",...</li><li>C. Rating trung bình của "Titanic".</li><li>D. Số lượng người đã xem "Titanic".</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Theo slide 13, user là "data instance", các feature là "items". Vậy để dự đoán cho item nhãn là "Titanic", các feature sẽ là rating của các item khác.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 69: Trong công thức cập nhật SGD của BPR (slide 35), tại sao đạo hàm theo `y_j` lại có dấu ngược lại so với đạo hàm theo `y_i`?</p><ul class="options"><li>A. Đó là một lỗi in ấn.</li><li class="correct-answer">B. Vì trong `r_uij = r_ui - r_uj`, `y_i` đóng góp dương và `y_j` đóng góp âm vào sự khác biệt. Do đó, gradient sẽ có hướng ngược nhau.</li><li>C. Vì `y_j` luôn nhỏ hơn `y_i`.</li><li>D. Vì `y_j` là vector của item âm.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Theo quy tắc chuỗi (chain rule) trong tính đạo hàm, khi lấy đạo hàm của hàm lỗi theo `y_i` và `y_j`, ta sẽ có các thành phần tương ứng với đạo hàm của `r_uij` theo `y_i` (là `x_u`) và theo `y_j` (là `-x_u`), dẫn đến dấu ngược nhau trong công thức cập nhật cuối cùng.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 70: So với MF truyền thống, ưu điểm chính của các mô hình dựa trên Deep Learning như NeuMF là gì?</p><ul class="options"><li>A. Chúng luôn nhanh hơn.</li><li>B. Chúng không cần dữ liệu.</li><li class="correct-answer">C. Chúng có thể nắm bắt các tương tác phi tuyến và phức tạp giữa user và item, điều mà MF (dựa trên tích vô hướng) không làm được.</li><li>D. Chúng dễ giải thích hơn.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Tích vô hướng của MF về cơ bản là một mô hình tuyến tính. Việc sử dụng các mạng nơ-ron sâu với các hàm kích hoạt phi tuyến cho phép các mô hình như NeuMF học được các mối quan hệ phức tạp hơn nhiều, có khả năng dẫn đến độ chính xác cao hơn.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 71: Trong kiến trúc DMF (slide 26), tại sao lại có hai "tháp" MLP riêng biệt cho user và item?</p><ul class="options"><li>A. Để làm cho mô hình đối xứng.</li><li class="correct-answer">B. Để học các biểu diễn ẩn riêng biệt và phù hợp cho không gian user và không gian item từ các vector tương tác thô.</li><li>C. Vì user và item luôn có cùng số lượng.</li><li>D. Để tăng số lượng tham số.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Kiến trúc này giả định rằng có những cấu trúc và mẫu khác nhau trong cách các user tương tác và cách các item được tương tác. Việc sử dụng hai mạng riêng biệt cho phép mô hình học các phép chiếu (projection) phi tuyến khác nhau để ánh xạ từ không gian tương tác thô sang không gian ẩn cho user và item.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 72: (Điền đáp án) Theo slide 40, lớp đầu vào của mô hình I2E cho một cặp (user, item) được gọi là gì?</p><div class="explanation"><p><b>✅ Đáp án:</b> <span class="fill-in-answer">ITE-one hot</span></p><p><b>💡 Giải thích:</b> Slide 40 có mục: "ITE-one hot: vector đầu vào là vector one hot mã hóa định danh cho người dùng, sản phẩm."</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 73: Dữ liệu implicit thường được coi là chỉ chứa phản hồi tích cực. Điều này gây ra thách thức gì cho việc học mô hình?</p><ul class="options"><li>A. Không có đủ dữ liệu.</li><li class="correct-answer">B. Thiếu các ví dụ tiêu cực (negative examples) thực sự, khiến mô hình khó phân biệt giữa "không thích" và "chưa biết".</li><li>C. Dữ liệu quá dày đặc.</li><li>D. Dữ liệu không có nhiễu.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Đây là vấn đề cốt lõi mà các mô hình như WMF và BPR cố gắng giải quyết. Khi tất cả dữ liệu quan sát được đều là "1", và dữ liệu không quan sát được là "0", mô hình không thể chắc chắn liệu "0" có nghĩa là không thích hay chỉ là chưa thấy. WMF giải quyết bằng trọng số tin cậy, BPR giải quyết bằng cách lấy mẫu cặp so sánh.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 74: Tại sao trong công thức hàm lỗi của Co-rating (slide 36), lại có hai thành phần `L_E` và `L_I`?</p><ul class="options"><li>A. Để mô hình học nhanh hơn.</li><li class="correct-answer">B. Vì mô hình học đồng thời trên hai loại dữ liệu: `L_E` cho lỗi trên dữ liệu explicit (Y) và `L_I` cho lỗi trên dữ liệu implicit (X).</li><li>C. Đây là hai cách tính lỗi khác nhau cho cùng một dữ liệu.</li><li>D. Để xử lý hai nhóm người dùng khác nhau.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Mô hình này được thiết kế để học từ cả hai nguồn thông tin. Do đó, hàm lỗi tổng thể phải bao gồm cả thành phần lỗi cho việc dự đoán dữ liệu explicit (ví dụ: rating) và thành phần lỗi cho việc dự đoán dữ liệu implicit (ví dụ: có mua hay không).</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 75: So sánh giữa BPR và WMF, mô hình nào được tối ưu hóa trực tiếp cho bài toán xếp hạng?</p><ul class="options"><li>A. WMF</li><li class="correct-answer">B. BPR</li><li>C. Cả hai</li><li>D. Không mô hình nào</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> WMF vẫn tối ưu hóa theo cách tiếp cận pointwise, cố gắng dự đoán một giá trị (mức độ tin cậy). Trong khi đó, BPR tối ưu hóa trực tiếp cho thứ tự tương đối giữa các item (pairwise), điều này gần với mục tiêu cuối cùng của bài toán xếp hạng hơn.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 76: (Điền đáp án) Theo slide 23, `ax, Wx, bx` trong công thức của MLP tương ứng là gì?</p><div class="explanation"><p><b>✅ Đáp án:</b> <span class="fill-in-answer">hàm kích hoạt, ma trận trọng số, bias</span></p><p><b>💡 Giải thích:</b> Slide 23 định nghĩa rõ: "`ax, Wx, bx` : là hàm kích hoạt, ma trận trọng số, bias của tầng thứ x."</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 77: Nếu một người dùng click vào một sản phẩm do nhầm lẫn, đây là ví dụ về điều gì trong dữ liệu implicit?</p><ul class="options"><li>A. Dữ liệu quý giá</li><li class="correct-answer">B. Nhiễu (Noise)</li><li>C. Tín hiệu mạnh</li><li>D. Dữ liệu explicit</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 27 đề cập rằng dữ liệu implicit "Có thể có nhiễu". Một cú click nhầm là một ví dụ điển hình của nhiễu, vì nó không phản ánh đúng ý định hay sở thích của người dùng.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 78: Lợi ích của việc sử dụng mô hình đa nhiệm (multi-task) như Neural Multi-Task Recommendation là gì?</p><ul class="options"><li>A. Mô hình trở nên đơn giản hơn.</li><li class="correct-answer">B. Việc học một nhiệm vụ có thể cải thiện kết quả cho các nhiệm vụ khác thông qua việc chia sẻ biểu diễn (shared representation).</li><li>C. Giảm lượng dữ liệu cần thiết.</li><li>D. Không cần hàm lỗi.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Trong học đa nhiệm, các nhiệm vụ liên quan (ví dụ: dự đoán click, dự đoán thêm vào giỏ, dự đoán mua) được học cùng nhau. Mô hình có thể học được các biểu diễn ẩn tổng quát và mạnh mẽ hơn bằng cách tận dụng tín hiệu từ tất cả các nhiệm vụ, giúp cải thiện hiệu suất chung.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 79: Trong WMF, tham số `α` (alpha) kiểm soát điều gì?</p><ul class="options"><li>A. Tốc độ học.</li><li class="correct-answer">B. Tốc độ tăng của độ tin cậy so với tần suất tương tác.</li><li>C. Số chiều của vector ẩn.</li><li>D. Mức độ hiệu chỉnh.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Trong công thức `c_ui = 1 + α * r_ui`, `α` quyết định mức độ quan trọng của tần suất (`r_ui`). `α` lớn có nghĩa là các tương tác lặp lại nhiều lần sẽ có độ tin cậy cao hơn rất nhiều so với các tương tác chỉ xảy ra một lần.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 80: Mô hình nào KHÔNG được đề cập trong slide 14?</p><ul class="options"><li>A. Neural matrix factorization</li><li>B. Deep matrix factorization</li><li class="correct-answer">C. Weighted matrix factorization</li><li>D. Cả A và B đều được đề cập.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 14 chỉ liệt kê "Neural matrix factorization" và "Deep matrix factorization" làm ví dụ về các phương pháp deep learning cho CF. Weighted MF là một mô hình khác, được giới thiệu ở phần sau.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 81: Sự khác biệt chính trong đầu vào của DMF (slide 26) so với NeuMF (slide 21, 23) là gì?</p><ul class="options"><li class="correct-answer">A. DMF lấy toàn bộ vector tương tác của user/item làm đầu vào, trong khi NeuMF lấy ID (dưới dạng one-hot) làm đầu vào.</li><li>B. NeuMF lấy toàn bộ vector tương tác, DMF lấy ID.</li><li>C. Cả hai đều lấy ID làm đầu vào.</li><li>D. Cả hai đều lấy toàn bộ vector tương tác làm đầu vào.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 26 cho thấy đầu vào của DMF là các cột/hàng từ "Interaction Matrix". Ngược lại, slide 21 và 23 cho thấy đầu vào của NeuMF là "vector one-hot mã hóa định danh", tức là ID.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 82: Trong mô hình I2E (slide 44), hàm lỗi `L_I` và `L_E` đều là dạng cross-entropy. Điều này ngụ ý các giá trị dự đoán `x_hat` và `y_hat` được coi là gì?</p><ul class="options"><li>A. Các giá trị rating từ 1 đến 5.</li><li class="correct-answer">B. Các xác suất (giá trị trong khoảng [0, 1]).</li><li>C. Các giá trị nguyên.</li><li>D. Các giá trị không bị chặn.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Hàm lỗi cross-entropy được sử dụng để đo lường sự khác biệt giữa hai phân phối xác suất. Việc sử dụng nó cho thấy đầu ra của mô hình (sau hàm sigmoid) được diễn giải như là xác suất của một hành vi (implicit hoặc explicit) xảy ra.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 83: Trong Naive Bayes cho CF, xác suất `P(ruk|ruj = vs)` được tính như thế nào từ tập dữ liệu huấn luyện?</p><ul class="options"><li>A. Bằng số lần user `u` rate item `k`.</li><li class="correct-answer">B. Bằng cách đếm trong tập huấn luyện, trong số tất cả các user đã rate item `j` với giá trị `vs`, có bao nhiêu phần trăm trong số họ cũng rate item `k` với giá trị `vk`.</li><li>C. Bằng độ tương đồng giữa item `k` và `j`.</li><li>D. Bằng 1.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Đây là cách ước lượng xác suất có điều kiện bằng tần suất tương đối từ dữ liệu. Ta sẽ lọc ra tất cả các user thỏa mãn điều kiện (`ruj = vs`) và sau đó tính tần suất của `ruk` trong tập con đó.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 84: Một hạn chế của BPR là gì?</p><ul class="options"><li>A. Nó không thể xử lý dữ liệu implicit.</li><li>B. Nó yêu cầu dữ liệu phải dày đặc.</li><li class="correct-answer">C. Nó bỏ qua thông tin về độ lớn của sự khác biệt (ví dụ: thích item A hơn B một chút so với thích A hơn B rất nhiều).</li><li>D. Nó không thể được cá nhân hóa.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> BPR chỉ quan tâm đến thứ tự (A > B). Nó không phân biệt giữa trường hợp (rating A=5, rating B=4.9) và (rating A=5, rating B=1). Cả hai đều được coi là A > B. Các mô hình khác có thể cố gắng nắm bắt cả độ lớn của sự ưa thích.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 85: (Điền đáp án) Trong mô hình GMF, nếu vector `pu = [0.1, 0.8]` và `qi = [0.5, 0.2]`, thì kết quả của phép `pu ⊙ qi` là vector nào?</p><div class="explanation"><p><b>✅ Đáp án:</b> <span class="fill-in-answer">[0.05, 0.16]</span></p><p><b>💡 Giải thích:</b> Phép nhân theo từng phần tử (element-wise product) sẽ là: `[0.1 * 0.5, 0.8 * 0.2] = [0.05, 0.16]`.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 86: Việc sử dụng chung các NCF Unit trong mô hình Neural Multi-Task (slide 38) thể hiện khái niệm gì trong Deep Learning?</p><ul class="options"><li>A. Dropout</li><li class="correct-answer">B. Chia sẻ tham số (Parameter Sharing)</li><li>C. Batch Normalization</li><li>D. Convolution</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Sơ đồ cho thấy các User Embedding và Item Embedding được chia sẻ và sử dụng bởi tất cả các "NCF Unit" cho các nhiệm vụ khác nhau. Đây là một hình thức chia sẻ tham số, giúp mô hình học được các biểu diễn tổng quát hơn và giảm nguy cơ overfitting.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 87: Tại sao dữ liệu explicit lại được coi là "quý giá"?</p><ul class="options"><li>A. Vì nó có rất nhiều.</li><li class="correct-answer">B. Vì nó là một tín hiệu rất mạnh và rõ ràng về sở thích của người dùng.</li><li>C. Vì nó dễ thu thập.</li><li>D. Vì nó không có nhiễu.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Theo slide 27, dữ liệu explicit "thể hiện sở thích của user". Một đánh giá 5 sao là một chỉ báo về sự yêu thích mạnh mẽ hơn nhiều so với một cú click (có thể là do tò mò hoặc nhầm lẫn).</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 88: Hàm lỗi của BPR được tối ưu hóa bằng phương pháp nào?</p><ul class="options"><li>A. Giải phương trình trực tiếp.</li><li class="correct-answer">B. Các phương pháp dựa trên gradient, như Stochastic Gradient Descent (SGD).</li><li>C. K-Means.</li><li>D. Thuật toán di truyền.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 35 trình bày các công thức cập nhật tham số (đạo hàm của hàm lỗi), đây là dấu hiệu của việc sử dụng các thuật toán tối ưu hóa dựa trên gradient như SGD.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 89: Trong mô hình I2E, tầng "Concatenation" (slide 40) ngay sau "Implicit Layer" làm gì?</p><ul class="options"><li>A. Tính tích vô hướng.</li><li class="correct-answer">B. Ghép nối đầu ra từ mô hình implicit với vector one-hot của item/user.</li><li>C. Áp dụng hàm ReLU.</li><li>D. Tính toán hàm lỗi.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Sơ đồ trên slide 40 cho thấy tầng "Implicit Layer" (đại diện cho `φ^I`) và tầng "Implicit Target" (đại diện cho ITE-one hot) cùng được đưa vào tầng "Concatenation" trước khi vào các lớp ITE tiếp theo. Điều này có nghĩa là nó kết hợp biểu diễn học được từ nhiệm vụ implicit với thông tin định danh gốc.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 90: Điểm yếu của phương pháp CF dựa trên Cây quyết định so với các mô hình phân rã ma trận là gì?</p><ul class="options"><li>A. Không thể xử lý dữ liệu rời rạc.</li><li class="correct-answer">B. Không chia sẻ được thông tin giữa các mô hình cho các item khác nhau, và không học được biểu diễn ẩn.</li><li>C. Luôn chậm hơn khi dự đoán.</li><li>D. Không thể xử lý dữ liệu thiếu.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Mỗi cây quyết định được xây dựng độc lập cho từng item. Chúng không học một không gian đặc trưng ẩn chung cho tất cả user và item như cách mà Matrix Factorization làm. Điều này làm cho chúng không thể khái quát hóa và chia sẻ thông tin một cách hiệu quả.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 91: Mô hình nào trong các slide được thiết kế để xử lý kịch bản mà người dùng có các hành vi theo một trình tự tuần tự?</p><ul class="options"><li>A. WMF</li><li>B. BPR</li><li class="correct-answer">C. Neural Multi-Task Recommendation và Implicit to Explicit model</li><li>D. GMF</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Cả Neural Multi-Task Recommendation (slide 38) và Implicit to Explicit model (slide 40) đều có kiến trúc phân tầng, nơi đầu ra của một giai đoạn (hành vi cấp thấp) làm đầu vào cho giai đoạn tiếp theo (hành vi cấp cao), rõ ràng mô hình hóa tính thứ tự và tuần tự.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 92: (Điền đáp án) Hàm lỗi trong hàm mục tiêu của I2E (slide 44) là tổng có trọng số của hai hàm lỗi `L_I`, `L_E` và một thành phần hiệu chỉnh `R(u,i)`. Trọng số của `L_I` là gì?</p><div class="explanation"><p><b>✅ Đáp án:</b> <span class="fill-in-answer">η (eta)</span></p><p><b>💡 Giải thích:</b> Công thức trên slide 44 là `L = η * L_I(...) + L_E(...) + λ * R(u,i)`. Trọng số của `L_I` là `η`.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 93: Tại sao mô hình GMF được gọi là "General" Matrix Factorization?</p><ul class="options"><li>A. Vì nó áp dụng cho mọi loại dữ liệu.</li><li class="correct-answer">B. Vì nó tổng quát hóa mô hình MF truyền thống bằng cách cho phép học tương tác thông qua một mạng nơ-ron (GMF Layer) thay vì chỉ một phép tích vô hướng cố định.</li><li>C. Vì nó là mô hình chung nhất.</li><li>D. Vì nó được phát minh bởi General Electric.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> GMF là một dạng tổng quát hóa. MF truyền thống là một trường hợp đặc biệt của GMF khi tầng cuối cùng là một phép tính tổng đơn giản (tương đương tích vô hướng). Bằng cách thêm các trọng số `h` và hàm kích hoạt `a_out`, GMF cho phép mô hình linh hoạt hơn.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 94: Trong công thức cập nhật SGD cho MF (slide 20), thành phần `-λ*w_u` có tác dụng gì?</p><ul class="options"><li>A. Tăng độ lớn của vector `w_u`.</li><li class="correct-answer">B. Kéo vector `w_u` về gần gốc tọa độ, chống lại việc các giá trị của nó trở nên quá lớn (hiệu chỉnh).</li><li>C. Đảm bảo `w_u` luôn dương.</li><li>D. Tăng tốc độ học.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Đây chính là đạo hàm của thành phần hiệu chỉnh L2 (`λ * ||w_u||^2`) theo `w_u`. Gradient này luôn hướng về phía ngược lại với `w_u`, do đó khi cập nhật, nó sẽ "co" `w_u` lại một chút, ngăn chặn overfitting.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 95: Trong bài toán CF, đâu là một ví dụ về dữ liệu "purchas" (mua hàng)?</p><ul class="options"><li class="correct-answer">A. Một người dùng mua một cuốn sách trên Tiki.</li><li>B. Một người dùng xem trailer một bộ phim.</li><li>C. Một người dùng click vào một bài báo.</li><li>D. Một người dùng cho một bài hát 5 sao.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 27 liệt kê "purchas" là một ví dụ của dữ liệu explicit. Hành động mua hàng là một minh chứng rõ ràng và mạnh mẽ cho sự quan tâm và sở thích.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 96: Nếu một hệ thống chỉ sử dụng GMF, nó sẽ gặp khó khăn trong việc nắm bắt loại tương tác nào?</p><ul class="options"><li>A. Tương tác tuyến tính đơn giản.</li><li class="correct-answer">B. Các tương tác phức tạp và phi tuyến giữa các thuộc tính ẩn.</li><li>C. Tương tác của người dùng mới.</li><li>D. Tương tác với các sản phẩm mới.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> GMF được thiết kế để mô hình hóa các tương tác tuyến tính. Để nắm bắt các mối quan hệ phức tạp hơn, cần đến các kiến trúc có khả năng học phi tuyến mạnh mẽ hơn, như MLP. Đây là lý do NeuMF kết hợp cả hai.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 97: Theo slide 10, công thức tính xác suất hậu nghiệm trong Naïve Bayes dựa trên định lý nào?</p><ul class="options"><li>A. Định lý giới hạn trung tâm</li><li>B. Định lý Pytago</li><li class="correct-answer">C. Định lý Bayes</li><li>D. Định lý cơ bản của đại số</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Công thức `P(A|B) = P(B|A)P(A) / P(B)` trên slide 10 là dạng cơ bản của Định lý Bayes, nền tảng của thuật toán Naïve Bayes.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 98: Trong Neural Multi-Task Recommendation, "hành vi mục tiêu" (target behavior) là gì?</p><ul class="options"><li>A. Hành vi đầu tiên trong chuỗi.</li><li class="correct-answer">B. Hành vi cuối cùng trong chuỗi, thường là hành vi quan trọng nhất cần dự đoán (ví dụ: mua hàng).</li><li>C. Tất cả các hành vi đều là mục tiêu.</li><li>D. Hành vi có tần suất cao nhất.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Slide 37 nói: "...trong đó hành vi cuối cùng được gọi là hành vi mục tiêu." Đây thường là hành vi có giá trị kinh doanh cao nhất mà hệ thống muốn tối ưu hóa.</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 99: Trong WMF, tại sao các tương tác không quan sát được (missing data) cũng được đưa vào hàm lỗi?</p<ul class="options"><li>A. Để làm cho việc tính toán phức tạp hơn.</li><li class="correct-answer">B. Vì chúng cũng mang thông tin. Một tương tác không xảy ra có thể là một tín hiệu (yếu) cho thấy sự không quan tâm. WMF gán cho chúng một độ tin cậy thấp (c_ui=1).</li><li>C. Vì không thể loại bỏ chúng.</li><li>D. Đó là một lỗi trong công thức.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Hàm mục tiêu của WMF tính tổng trên tất cả các cặp (u,i), bao gồm cả các cặp có `r_ui=0` (tức `p_ui=0`). Đối với các cặp này, `c_ui=1`, và mô hình sẽ cố gắng dự đoán giá trị gần 0. Điều này giúp mô hình học được cả tín hiệu tiêu cực (dù yếu).</p></div></div>
+        <div class="question-block"><p class="question-text">Câu 100: Mục đích cuối cùng của việc phát triển các mô hình CF dựa trên Deep Learning là gì?</p><ul class="options"><li>A. Chỉ để sử dụng GPU hiệu quả hơn.</li><li class="correct-answer">B. Để cải thiện độ chính xác và khả năng biểu diễn của các hệ gợi ý bằng cách học các mối quan hệ phức tạp, phi tuyến từ dữ liệu.</li><li>C. Để thay thế hoàn toàn các mô hình thống kê truyền thống.</li><li>D. Để giảm sự cần thiết của việc hiểu dữ liệu.</li></ul><div class="explanation"><p><b>💡 Giải thích:</b> Sức mạnh của Deep Learning nằm ở khả năng tự động học các biểu diễn và các mẫu phức tạp từ dữ liệu thô. Trong CF, điều này có nghĩa là có thể khám phá ra các khía cạnh tinh vi trong sở thích của người dùng và các đặc tính của sản phẩm, từ đó đưa ra các gợi ý chính xác và phù hợp hơn.</p></div></div>
+
+    </div>
+
+</body>
+</html>
